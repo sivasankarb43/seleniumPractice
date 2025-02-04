@@ -1,6 +1,6 @@
 package stepDefnition;
 
-import cucumber.api.java.en.Given;
+import io.cucumber.java.en.Given;
 
 public class loginSteps {
 	
