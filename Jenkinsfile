@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+<<<<<<< HEAD
+    stages {
+        stage('Checkout Code') {
+=======
     parameters {
         string(name: 'XRAY_TEST_EXECUTION', defaultValue: '', description: 'Xray Test Execution Key')
     }
@@ -8,11 +12,40 @@ pipeline {
     stages {
         // Clone the Git repository from GitHub (master branch)
         stage('Clone Repo') {
+>>>>>>> master
             steps {
                 git branch: 'master', url: 'https://github.com/sivasankarb43/seleniumPractice.git'
             }
         }
 
+<<<<<<< HEAD
+        stage('Build Project') {
+            steps {
+                script {
+                    echo 'Building Project...'
+                    sh 'mvn clean install'
+                }
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                script {
+                    echo 'Running Tests...'
+                    sh 'mvn test'
+                }
+            }
+        }
+
+        stage('Post Build Actions') {
+            steps {
+                script {
+                    echo 'Build Completed!'
+                }
+            }
+        }
+    }
+=======
         // Run Cucumber tests with the given Xray Test Execution Key
         stage('Run Cucumber Tests') {
             steps {
@@ -48,4 +81,5 @@ pipeline {
             // Optional: Add any cleanup steps after the build here
         }
     }
+>>>>>>> master
 }

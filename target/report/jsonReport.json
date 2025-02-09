@@ -3,8 +3,8 @@
     "line": 2,
     "elements": [
       {
-        "start_timestamp": "2025-02-04T04:48:11.476Z",
-        "line": 12,
+        "start_timestamp": "2025-02-06T15:44:17.270Z",
+        "line": 11,
         "name": "Title of your scenario outline",
         "description": "",
         "id": "title-of-your-feature;title-of-your-scenario-outline;;2",
@@ -13,7 +13,7 @@
         "steps": [
           {
             "result": {
-              "duration": 2350800,
+              "duration": 2143500,
               "status": "passed"
             },
             "line": 7,
@@ -35,7 +35,7 @@
             "name": "@tag"
           },
           {
-            "name": "@tag2"
+            "name": "@API"
           }
         ]
       }
