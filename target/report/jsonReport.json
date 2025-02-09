@@ -3,8 +3,8 @@
     "line": 2,
     "elements": [
       {
-        "start_timestamp": "2025-02-06T15:44:17.270Z",
-        "line": 11,
+        "start_timestamp": "2025-02-09T08:22:22.932Z",
+        "line": 19,
         "name": "Title of your scenario outline",
         "description": "",
         "id": "title-of-your-feature;title-of-your-scenario-outline;;2",
@@ -13,19 +13,13 @@
         "steps": [
           {
             "result": {
-              "duration": 2143500,
+              "duration": 4559500,
               "status": "passed"
             },
-            "line": 7,
-            "name": "I want to write a step with Siva",
+            "line": 15,
+            "name": "just print hello iam working fine",
             "match": {
-              "arguments": [
-                {
-                  "val": "Siva",
-                  "offset": 28
-                }
-              ],
-              "location": "loginSteps.logInFirstStep(String)"
+              "location": "loginSteps.print_working_fine()"
             },
             "keyword": "Given "
           }
@@ -35,7 +29,7 @@
             "name": "@tag"
           },
           {
-            "name": "@API"
+            "name": "@UI"
           }
         ]
       }

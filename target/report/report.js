@@ -15,12 +15,12 @@ formatter.scenarioOutline({
   "keyword": "Scenario Outline",
   "tags": [
     {
-      "name": "@API"
+      "name": "@UI"
     }
   ]
 });
 formatter.step({
-  "name": "I want to write a step with \u003cname\u003e",
+  "name": "just print hello iam working fine",
   "keyword": "Given "
 });
 formatter.examples({
@@ -53,16 +53,16 @@ formatter.scenario({
       "name": "@tag"
     },
     {
-      "name": "@API"
+      "name": "@UI"
     }
   ]
 });
 formatter.step({
-  "name": "I want to write a step with Siva",
+  "name": "just print hello iam working fine",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "loginSteps.logInFirstStep(String)"
+  "location": "loginSteps.print_working_fine()"
 });
 formatter.result({
   "status": "passed"
