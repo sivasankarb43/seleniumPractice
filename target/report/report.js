@@ -15,7 +15,7 @@ formatter.scenarioOutline({
   "keyword": "Scenario Outline",
   "tags": [
     {
-      "name": "@tag2"
+      "name": "@API"
     }
   ]
 });
@@ -53,7 +53,7 @@ formatter.scenario({
       "name": "@tag"
     },
     {
-      "name": "@tag2"
+      "name": "@API"
     }
   ]
 });

@@ -1,51 +1,37 @@
 pipeline {
     agent any
 
-    parameters {
-        string(name: 'XRAY_TEST_EXECUTION', defaultValue: '', description: 'Xray Test Execution Key')
-    }
-
     stages {
-        // Clone the Git repository from GitHub (master branch)
-        stage('Clone Repo') {
+        stage('Checkout Code') {
             steps {
                 git branch: 'master', url: 'https://github.com/sivasankarb43/seleniumPractice.git'
             }
         }
 
-        // Run Cucumber tests with the given Xray Test Execution Key
-        stage('Run Cucumber Tests') {
+        stage('Build Project') {
             steps {
-                sh '''
-                mvn clean test -Dcucumber.options="--tags @XrayTestExecution=${XRAY_TEST_EXECUTION}"
-                '''
+                script {
+                    echo 'Building Project...'
+                    sh 'mvn clean install'
+                }
             }
         }
 
-        // Publish the Cucumber test results
-        stage('Publish Cucumber Report') {
+        stage('Run Tests') {
             steps {
-                cucumber 'target/cucumber.json' // Path to the Cucumber JSON report
+                script {
+                    echo 'Running Tests...'
+                    sh 'mvn test'
+                }
             }
         }
 
-        // Upload the results back to Xray
-        stage('Upload Results to Xray') {
+        stage('Post Build Actions') {
             steps {
-                sh '''
-                curl -X POST "https://xray.cloud.getxray.app/api/v2/import/execution/cucumber" \
-                -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
-                -H "Content-Type: multipart/form-data" \
-                -F "file=@target/cucumber.json"
-                '''
+                script {
+                    echo 'Build Completed!'
+                }
             }
-        }
-    }
-
-    post {
-        always {
-            echo 'Cleaning up after build'
-            // Optional: Add any cleanup steps after the build here
         }
     }
 }
