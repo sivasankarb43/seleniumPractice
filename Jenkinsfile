@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script {
                     echo 'Building Project...'
-                    sh 'mvn clean install'
+                    bat 'mvn clean install' // Changed sh to bat for Windows
                 }
             }
         }
@@ -21,8 +21,14 @@ pipeline {
             steps {
                 script {
                     echo 'Running Tests...'
-                    sh 'mvn test'
+                    bat 'mvn test' // Changed sh to bat for Windows
                 }
+            }
+        }
+
+        stage('Publish Test Results') {
+            steps {
+                junit '**/target/surefire-reports/*.xml' // Archive test reports
             }
         }
 
@@ -32,6 +38,13 @@ pipeline {
                     echo 'Build Completed!'
                 }
             }
+        }
+    }
+    
+    post {
+        always {
+            echo 'Cleaning up workspace...'
+            deleteDir() // Clean workspace after execution
         }
     }
 }
