@@ -36,12 +36,12 @@ pipeline {
         }
     }
 
-   /* post {
+    post {
         always {
             script {
                 echo 'Checking for Cucumber JSON report...'
                 if (fileExists('target/cucumber.json')) {
-                    cucumber fileIncludePattern: '**//*cucumber.json', reportTitle: 'Cucumber Test Report'
+                    cucumber fileIncludePattern: '**/cucumber.json', reportTitle: 'Cucumber Test Report'
                 } else {
                     echo "Cucumber JSON report not found!"
                 }
@@ -65,5 +65,5 @@ pipeline {
         success {
             echo 'Build succeeded. Reports generated successfully.'
         }
-    } */
+    } 
 }
