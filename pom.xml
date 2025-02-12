@@ -78,7 +78,7 @@
 						<configuration>
 							<projectName>Cucumber Automation Report</projectName>
 							<outputDirectory>
-								${project.build.directory}/target/cucumber-reports</outputDirectory>
+								${project.build.directory}/cucumber-reports</outputDirectory>
 							<jsonFiles>${project.build.directory}/target/cucumber.json</jsonFiles>
 						</configuration>
 					</execution>
