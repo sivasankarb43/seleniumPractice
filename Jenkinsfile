@@ -56,7 +56,7 @@ pipeline {
                 reportFiles: 'index.html',
                 reportName: 'Cucumber Test Report'
             ])
-        }
+        }	
 
         failure {
             echo 'Build failed. Please check the logs!'
