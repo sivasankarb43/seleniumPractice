@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script {
                     echo 'Building Project...'
-                    bat 'mvn clean install' // Changed sh to bat for Windows
+                    bat 'mvn clean install'
                 }
             }
         }
@@ -21,30 +21,32 @@ pipeline {
             steps {
                 script {
                     echo 'Running Tests...'
-                    bat 'mvn test' // Changed sh to bat for Windows
+                    bat 'mvn test'
                 }
             }
         }
 
-        stage('Publish Test Results') {
-            steps {
-                junit '**/target/surefire-reports/*.xml' // Archive test reports
-            }
-        }
-
-        stage('Post Build Actions') {
+        stage('Generate Cucumber Report') {
             steps {
                 script {
-                    echo 'Build Completed!'
+                    echo 'Generating Cucumber Report...'
+                    bat 'mvn verify'
                 }
             }
         }
     }
-    
+
     post {
         always {
-            echo 'Cleaning up workspace...'
-            deleteDir() // Clean workspace after execution
+            echo 'Publishing Cucumber Reports...'
+            publishHTML(target: [
+                allowMissing: false,
+                alwaysLinkToLastBuild: true,
+                keepAll: true,
+                reportDir: 'target/cucumber-reports',
+                reportFiles: 'index.html',
+                reportName: 'Cucumber Test Report'
+            ])
         }
     }
 }
