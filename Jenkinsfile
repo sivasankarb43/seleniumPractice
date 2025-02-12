@@ -38,7 +38,16 @@ pipeline {
 
     post {
         always {
-            echo 'Publishing Cucumber Reports...'
+            script {
+                echo 'Checking for Cucumber JSON report...'
+                if (fileExists('target/cucumber.json')) {
+                    cucumber fileIncludePattern: '**/cucumber.json', reportTitle: 'Cucumber Test Report'
+                } else {
+                    echo "Cucumber JSON report not found!"
+                }
+            }
+
+            echo 'Publishing Cucumber HTML Reports...'
             publishHTML(target: [
                 allowMissing: false,
                 alwaysLinkToLastBuild: true,
@@ -47,6 +56,14 @@ pipeline {
                 reportFiles: 'index.html',
                 reportName: 'Cucumber Test Report'
             ])
+        }
+
+        failure {
+            echo 'Build failed. Please check the logs!'
+        }
+
+        success {
+            echo 'Build succeeded. Reports generated successfully.'
         }
     }
 }
