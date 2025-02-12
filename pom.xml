@@ -64,7 +64,7 @@
 			</plugin>
 
 			<!--for generating report in Jenkins-->
-			<plugin>
+			<!--<plugin>
 				<groupId>net.masterthought</groupId>
 				<artifactId>maven-cucumber-reporting</artifactId>
 				<version>5.7.6</version>
@@ -83,7 +83,7 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin>-->
 
 
 		</plugins>
